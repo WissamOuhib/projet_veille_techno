@@ -1,0 +1,8 @@
+nom de la BD MySQL :  bd_espace_collaboratif
+
+script:
+
+
+CREATE TABLE `bd_espace_collaboratif`.`document` ( `id` BIGINT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , `path` VARCHAR(200) NOT NULL , `annee` YEAR NOT NULL , `domaine` VARCHAR(200) NOT NULL , `niveau` INT NOT NULL , `date_ajout` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `valide` INT NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE = MyISAM;
+
+
