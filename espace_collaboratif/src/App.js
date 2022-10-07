@@ -1,29 +1,23 @@
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import './App.css';
+import Accueil from './components/Accueil';
 import AddDocument from './components/AddDocument';
+import DetailDocument from './components/DetailDocument';
 import ListDocuments from './components/ListDocuments';
 
 function App() {
   return (
     <div className="App">
 
-      <h5>Hello espace collaboratif patate</h5>
-
       <BrowserRouter>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Liste documents</Link>
-            </li>
-            <li>
-              <Link to="document/add">Ajouter document</Link>
-            </li>
-          </ul>
-        </nav>
+
+      <Link to="/">Accueil</Link>
+
         <Routes>
-          <Route index element={<ListDocuments />} />
+          <Route index element={<Accueil />} />
+          <Route path="document/list" index element={<ListDocuments />} />
           <Route path="document/add" element={<AddDocument />} />
-          {/* <Route path="document/:id/edit" element={<EditDocument />} /> */}
+          <Route path="document/list/:id/detail" element={<DetailDocument />} />
         </Routes>
       </BrowserRouter>
 
