@@ -4,25 +4,30 @@ import Accueil from './components/Accueil';
 import AddDocument from './components/AddDocument';
 import DetailDocument from './components/DetailDocument';
 import ListDocuments from './components/ListDocuments';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
+ 
   return (
-    
     <div className="App">
-
       <BrowserRouter>
-
-      <Link to="/">Accueil</Link>
+      <Link to="/" className='a_logo_accueil'>
+        <span className="logo_accueil"></span>
+      </Link>
+      
 
         <Routes>
           <Route index element={<Accueil />} />
-          <Route path="document/list" index element={<ListDocuments />} />
-          <Route path="document/add" element={<AddDocument />} />
-          <Route path="document/list/:id/detail" element={<DetailDocument />} />
+          <Route path="accueil/list" element={<ListDocuments />} />
+          <Route path="accueil/add" element={<AddDocument />} />
+          <Route path="accueil/list/:id/detail" element={<DetailDocument />} />
         </Routes>
       </BrowserRouter>
 
     </div>
+
+    
   );
 }
 

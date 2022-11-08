@@ -3,9 +3,26 @@
  * Returns the list of documents.
  */
 require 'connect.php';
+
+/*
+$data= $_POST;
+var_dump($data);
+*/
+
+$postdata = file_get_contents('php://input');
+
+
+if(isset($postdata) && !empty($postdata))
+{
+  // Extract the data.
+  $data = json_decode($postdata, true);
+  $domaine = $data['domaine']; 
+  //echo $domaine;;
+}
+
     
 $documents = [];
-$sql = "SELECT * FROM document WHERE valide=1";
+$sql = "SELECT * FROM document WHERE valide=1 AND domaine='{$domaine}'";
 
 if($result = mysqli_query($con,$sql))
 {

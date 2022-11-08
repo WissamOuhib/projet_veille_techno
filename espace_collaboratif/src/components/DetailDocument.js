@@ -1,12 +1,10 @@
 import { useState } from "react";
 
-import '.././potato.css';
-
 export default function DetailDocument() {
 
     return ( 
     <div>
-        <h1 className="potato">Détail document</h1>
+        <h1>Détail document</h1>
 
             <button>Sauvegarder</button>
             <button>Proposer solution</button>

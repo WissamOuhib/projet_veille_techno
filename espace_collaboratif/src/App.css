@@ -14,3 +14,22 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
 }
+
+.a_logo_accueil {
+  display: block;
+  width: 80px;
+  margin-left: 2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.logo_accueil {
+  display: block;
+  background-image: url("media/logo11.png");
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+  box-shadow: #000 5px 5px 10px;
+}

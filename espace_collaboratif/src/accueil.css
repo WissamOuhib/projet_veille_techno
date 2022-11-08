@@ -1,0 +1,232 @@
+body {
+ /*   background-color: rgb(15 23 42);*/
+ background-color: #0f172a;
+}
+
+#maincontainer {
+    width: 100%;
+}
+
+#canvacontainer {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    /* height: 180vh;*/
+    position: absolute;
+    background-color: #0f172a;
+  /*  background: radial-gradient(
+    circle farthest-corner at center top,
+    #071021,
+    #19324a
+  );*/
+}
+
+#canva1 {
+  height: unset;
+}
+
+#canva2 {
+  top: 60%;
+ /* height: 100vh;*/
+  position: relative;
+}
+
+
+canvas {
+    position: absolute;
+    display: grid !important;
+    height: inherit !important;
+    width: 100% !important;
+}
+
+.htmlcontainer {
+    display: grid;
+  
+    position: absolute; /*pour que le canvas se positionne dessus*/
+    width: inherit;
+  }
+
+.top-container {
+  height: 80vh;
+}
+
+@import url('https://fonts.cdnfonts.com/css/harry-potter');
+
+.titre_accueil {
+  text-align: center;
+  font-size: 7vw;
+ /* background: -webkit-linear-gradient(#fa7a0a 100%, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: #000 10px 0 10px;*/
+  /*color: #fa7a0a;*/
+  margin-left: 0%;
+  width: 70%;
+  font-family: 'Harry Potter', sans-serif;
+  letter-spacing: 5px;
+
+ /* -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 5s ease-in-out infinite alternate;
+  animation: color-change 5s infinite;*/
+
+  text-shadow: #000 10px 0 15px;
+  background: linear-gradient(to left,#aaa 20%, #fa7a0a 40%, #fa7a0a 60%, #7DF9FF 80%, #aaa 100%);
+  background-size: 200% auto;
+
+  color: #000 ;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: shine 10s linear infinite;
+                                            
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/*
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #000, 0 0 30px #000, 0 0 40px #000, 0 0 50px #000, 0 0 60px #000, 0 0 70px #000, 0 0 80px #000;
+  }
+} 
+*/
+/*
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fa7a0a, 0 0 20px #fa7a0a, 0 0 30px #fa7a0a, 0 0 40px #fa7a0a, 0 0 50px #fa7a0a, 0 0 60px #fa7a0a, 0 0 70px #fa7a0a;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fa7a0a, 0 0 30px #000, 0 0 40px #000, 0 0 50px #000, 0 0 60px #000, 0 0 70px #000, 0 0 80px #000;
+  }
+}
+*/
+/*
+ @keyframes glow {
+  from {
+    text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000, 0 0 40px #000, 0 0 50px #000, 0 0 60px #000, 0 0 70px #000;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #000, 0 0 30px #666, 0 0 40px #666, 0 0 50px #666, 0 0 60px #666, 0 0 70px #666, 0 0 80px #666;
+  }
+} 
+  */
+
+.card-container {
+  display: grid;
+  height: 130vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows:  1fr 1fr;
+  grid-template-areas:
+        "card_1 card_2"
+        "card_3 card_4";
+  /*grid-gap: 1.5rem;*/
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 50px;
+}
+
+#card_1 {
+  grid-area: card_1;
+  /* background-image: url("media/arts1.gif"); */
+}
+
+#card_2 {
+  grid-area: card_2;
+}
+
+#card_3 {
+  grid-area: card_3;
+}
+
+#card_4 {
+  grid-area: card_4;
+}
+
+.card {
+  margin: 30px;
+  box-shadow: 5px 0px 20px 0px rgb(255 255 255 / 20%);
+ /* background: rgba(0, 0, 0, 0.4); */
+  /*border: 5px solid rgba(0, 0, 0, 0.1);*/
+  /*box-shadow: 0px 0px 2px 1px white inset;*/
+  border-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  position: relative;
+
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.5s;
+
+  box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+  transform: translatey(0px);
+	animation: float 4s ease-in-out infinite;
+
+  cursor:pointer;
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0.7;
+}
+
+.card a {
+  color: #fa7a0a;
+  font-family: 'Harry Potter', sans-serif;
+  margin: auto;
+  font-size: 2.5vw;
+  font-weight: bold;
+  text-shadow: #000 10px 0 20px;
+  position: absolute;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 700px) {
+
+  .card-container {
+    grid-template-columns: 1fr;
+    grid-template-rows:  1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "card_1" "card_2" "card_3" "card_4";
+  }
+
+}
+
