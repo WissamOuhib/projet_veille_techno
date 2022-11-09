@@ -195,7 +195,7 @@ function My3dBody () {
   useEffect(() => {
 
     /***********************************/
-    design();
+   // design();
     /*************************************/
 
   }//faire un return function ici si on veut qlq chose au démontage

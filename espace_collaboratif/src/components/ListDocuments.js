@@ -1,18 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function ListDocuments() {
 
     const [documents, setDocuments] = useState([]);
     const location = useLocation()
     const { domaine } = location.state
+    const navigate = useNavigate()
+
     // const qs = require('qs'); 
 
   //  console.log(domaine);
 
     useEffect(() => {
-   
+        navigate('', { state: { domaine: domaine }}); /*je sauvegarde domaine*/
         getDocuments();
     }, []);
 
@@ -23,8 +25,8 @@ export default function ListDocuments() {
              setDocuments(response.data.data);
          });
 
-        const formData = new FormData();
-        formData.append('domaine', domaine);
+     //   const formData = new FormData();
+     //   formData.append('domaine', domaine);
 /*
         axios({
             method: 'post',
@@ -57,23 +59,24 @@ export default function ListDocuments() {
                     <tr>
                         <th>Document</th>
                         <th>Annee</th>
+                        <th>Niveau</th>
                     </tr>
                 </thead>
-                { <tbody>
+                {<tbody>
                     {documents.map((document, key) =>
-                    <tr key={key}>
-                        <td>
-                            <Link to={`${document.id}/detail`}>{document.nom}</Link>
-                        </td>
-                        <td>{document.annee}</td>
-                         
-                    </tr>
+                        <tr key={key}>
+                            <td>
+                                <Link to={`${document.id}/detail`}>{document.nom}</Link>
+                            </td>
+                            <td>{document.annee}</td>
+                            <td>Bac + {document.niveau}</td>
+                        </tr>
                     )}
-                </tbody> }
+                </tbody>}
             </table>
 
             <div>
-            <Link to="../accueil/add">Ajouter document</Link>
+                <Link to="../accueil/add">Ajouter document</Link>
             </div>
 
         </div>

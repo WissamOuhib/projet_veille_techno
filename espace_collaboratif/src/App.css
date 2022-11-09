@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: white;
 }
 
 nav ul {
@@ -11,7 +12,7 @@ nav ul li {
   padding: 10px; 
 }
 
-nav ul li a {
+nav ul li a, a {
   text-decoration: none;
 }
 
@@ -31,5 +32,25 @@ nav ul li a {
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50px;
-  box-shadow: #000 5px 5px 10px;
+  box-shadow: rgb(0, 0, 0) 5px 5px 10px;
+}
+
+/************* LES LISTES (tables) ****************/
+
+table {
+  width: 90%;
+  display: table;
+  color: black;
+  margin: 5%;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+table a {
+  color: #551a8b;
+  font-weight: bold;
+}
+
+tr {
+  background: white;
 }

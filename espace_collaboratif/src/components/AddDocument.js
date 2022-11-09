@@ -58,7 +58,7 @@ export default function AddDocument() {
                             <td>
                             <select name="domaine" id="domaine" onChange={handleChange}>
                                 <option></option>
-                                <option value="ALG">Arts, Lettres, Langues</option>
+                                <option value="ALL">Arts, Lettres, Langues</option>
                                 <option value="DEG">Droit, Economie, Gestion</option>
                                 <option value="STS">Sciences, Technologies, Santé</option>
                                 <option value="SHS">Sciences humaines et Sociales</option>
