@@ -35,6 +35,15 @@ nav ul li a, a {
   box-shadow: rgb(0, 0, 0) 5px 5px 10px;
 }
 
+/****** Liste des documents ********/
+
+.titre_liste_documents {
+  color: #fa7a0a;
+  font-family: 'Harry Potter', sans-serif;
+  text-shadow: #000 10px 0 20px;
+}
+/*************************************/
+
 /************* LES LISTES (tables) ****************/
 
 table {
@@ -44,13 +53,39 @@ table {
   margin: 5%;
   border: 2px solid white;
   border-radius: 5px;
+  border-spacing: 3px;
+  padding: 10px;
+  
+}
+
+.liste_ALL{
+  background-image: url("media/arts1.gif");
+  /*  background-repeat: no-repeat;
+    background-size: cover;*/
+}
+
+.liste_STS{
+  background-image: url("media/sciences2.jpg");
+}
+
+.liste_DEG{
+  background-image: url("media/droit.jpg");
+}
+
+.liste_SHS{
+  background-image: url("media/social.png");
 }
 
 table a {
-  color: #551a8b;
+  color: /*#551a8b*/#fa7a0a;
   font-weight: bold;
 }
 
 tr {
-  background: white;
+  background: #eee;
+  box-shadow: #000 2px 0 5px;
+}
+
+td {
+  padding: 5px;
 }

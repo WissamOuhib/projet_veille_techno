@@ -49,12 +49,27 @@ export default function ListDocuments() {
 
     }
 
+    function titre_page() {
+        switch (domaine) {
+            case 'ALL':
+                return "Arts, Lettres, Langues";
+            case 'STS':
+                return "Sciences, Technologies, Santé";
+            case 'DEG':
+                return "Droit, Economie, Gestion";
+            case 'SHS':
+                return "Sciences Humaines et Sociales";
+            default:
+              return ""
+          }
+    }
+
     return (
         
         <div>
-            <h1>Liste des documents</h1>
+            <h1 className="titre_liste_documents">{titre_page()}</h1>
 
-            <table>
+            <table className={`liste_${domaine}`}>
                 <thead>
                     <tr>
                         <th>Document</th>
