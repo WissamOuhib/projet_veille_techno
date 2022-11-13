@@ -33,15 +33,90 @@ nav ul li a, a {
   background-repeat: no-repeat;
   border-radius: 50px;
   box-shadow: rgb(0, 0, 0) 5px 5px 10px;
+
+  animation: rotate 10s ease infinite;
 }
 
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes rotate{
+  0% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
 /****** Liste des documents ********/
 
 .titre_liste_documents {
-  color: #fa7a0a;
+ /* color: #fa7a0a;*/
   font-family: 'Harry Potter', sans-serif;
-  text-shadow: #000 10px 0 20px;
+  letter-spacing: 5px;
+  font-size: 3vw;
+
+  text-shadow: #000 10px 0 15px;
+  background: linear-gradient(to left,#aaa 20%, #fa7a0a 40%, #fa7a0a 60%, #7DF9FF 80%, #aaa 100%);
+  background-size: 200% auto;
+  color: #000 ;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: shine 10s linear infinite;
 }
+
+.card_ajouter_doc {
+  width: 550px;
+/*  height: 10vw;*/
+  margin: auto;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  display: flex;
+}
+
+.bulle {
+  height: 130px;
+}
+.hermione {
+  height: 300px;
+}
+
+.card_ajouter_doc a {
+  margin: auto;
+  background: #eee;
+  border-radius: 50px;
+  animation: zoom-in-zoom-out 5s ease infinite;
+}
+
+.card_ajouter_doc span {
+  display: block;
+  background-image: url("media/add_doc.png");
+  width: 100px;
+  height: 100px;
+  background-size: 70%;
+  background-position-x: 70%;
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+
+  /* box-shadow: rgb(0, 0, 0) 5px 5px 10px;*/ 
+}
+
 /*************************************/
 
 /************* LES LISTES (tables) ****************/

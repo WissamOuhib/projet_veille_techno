@@ -1,6 +1,76 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import * as THREE from "three";
+import { make_particles, make_particlesLight } from '.././js/threeDesign.js';
+
+
+function design() {
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x0f172a);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();/*alpha true pour la transparence du fond*/
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    //renderer.outputEncoding = THREE.sRGBEncoding;
+    document.getElementById("canva1").appendChild(renderer.domElement);
+    renderer.clearColor();
+  
+    const scene2 = new THREE.Scene();
+    const renderer2 = new THREE.WebGLRenderer({ alpha: true });/*alpha true pour la transparence du fond*/
+    renderer2.setSize(window.innerWidth, window.innerHeight);
+    renderer2.outputEncoding = THREE.sRGBEncoding;
+    document.getElementById("canva2").appendChild(renderer2.domElement);
+    renderer2.clearColor();
+
+    camera.position.set(0, 0, 0);
+  
+    //particles
+    const particles = make_particles();
+    const particles2 = make_particles();
+  
+    scene.add(particles);
+    scene2.add(particles2);
+
+    //Lights
+
+    scene.add(make_particlesLight());
+    scene2.add(make_particlesLight());
+
+    /**************************************/
+    const clock = new THREE.Clock();
+
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+        renderer2.render(scene2, camera);
+
+        //animate particles 
+        const elapsedTime = clock.getElapsedTime();
+        particles.rotation.y = elapsedTime * 0.02;
+        particles2.rotation.y = elapsedTime * 0.02;
+    }
+
+    animate();
+    /**************************************/
+
+}
+
+function My3dBody () {
+
+    useEffect(() => {
+      /***********************************/
+    design();
+      /*************************************/
+    }
+    )
+  
+    return <div id="canvacontainer">
+      <div id="canva1"></div>
+      <div id="canva2" style={{top:"70%"}}></div>
+    </div>
+          
+}
 
 export default function ListDocuments() {
 
@@ -8,10 +78,6 @@ export default function ListDocuments() {
     const location = useLocation()
     const { domaine } = location.state
     const navigate = useNavigate()
-
-    // const qs = require('qs'); 
-
-  //  console.log(domaine);
 
     useEffect(() => {
         navigate('', { state: { domaine: domaine }}); /*je sauvegarde domaine*/
@@ -24,29 +90,6 @@ export default function ListDocuments() {
            //  console.log(response.data.data);
              setDocuments(response.data.data);
          });
-
-     //   const formData = new FormData();
-     //   formData.append('domaine', domaine);
-/*
-        axios({
-            method: 'post',
-            url: 'http://localhost/api_veille_techno/listValide1.php/',
-            data: formData,
-            config: {headers: {'Content-Type':'multipart/form-data'}}
-        }).then(function(response){
-            // console.log(response.data.data);
-           //  setDocuments(response.data.data);
-         });
-*/
-
-/*
-        axios.post('http://localhost/api_veille_techno/listValide1.php/', qs.stringify(formData, { parseArrays: false })) 
-        .then(function(response){
-            // console.log(response.data.data);
-           //  setDocuments(response.data.data);
-         });
-         */
-
     }
 
     function titre_page() {
@@ -65,36 +108,40 @@ export default function ListDocuments() {
     }
 
     return (
-        
-        <div>
-            <h1 className="titre_liste_documents">{titre_page()}</h1>
-
-            <table className={`liste_${domaine}`}>
-                <thead>
-                    <tr>
-                        <th>Document</th>
-                        <th>Annee</th>
-                        <th>Niveau</th>
-                    </tr>
-                </thead>
-                {<tbody>
-                    {documents.map((document, key) =>
-                        <tr key={key}>
-                            <td>
-                                <Link to={`${document.id}/detail`}>{document.nom}</Link>
-                            </td>
-                            <td>{document.annee}</td>
-                            <td>Bac + {document.niveau}</td>
-                        </tr>
-                    )}
-                </tbody>}
-            </table>
-
-            <div>
-                <Link to="../accueil/add">Ajouter document</Link>
+        <div id="maincontainer">{My3dBody()}
+            <div className="htmlcontainer">
+                <div>
+                    <h1 className="titre_liste_documents">{titre_page()}</h1>
+                    <table className={`liste_${domaine}`}>
+                        <thead>
+                            <tr>
+                                <th>Document</th>
+                                <th>Annee</th>
+                                <th>Niveau</th>
+                            </tr>
+                        </thead>
+                        {<tbody>
+                            {documents.map((document, key) =>
+                                <tr key={key}>
+                                    <td>
+                                        <Link to={`${document.id}/detail`}>{document.nom}</Link>
+                                    </td>
+                                    <td>{document.annee}</td>
+                                    <td>Bac + {document.niveau}</td>
+                                </tr>
+                            )}
+                        </tbody>}
+                    </table>
+                    <div className="card_ajouter_doc">
+                        {/* <h3>Ajouter un document</h3> */}
+                        <img className="bulle" src={require('.././media/bulle_texte.png')}></img>
+                        <img className="hermione" src={require('.././media/hermione11.png')}></img>
+                        <Link to="../accueil/add">
+                            <span></span>
+                        </Link>
+                    </div>
+                </div>
             </div>
-
         </div>
-        
     )
 }
