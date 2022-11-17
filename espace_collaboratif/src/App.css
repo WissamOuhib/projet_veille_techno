@@ -62,7 +62,7 @@ nav ul li a, a {
 }
 /****** Liste des documents ********/
 
-.titre_liste_documents {
+.gros_titre_couleur {
  /* color: #fa7a0a;*/
   font-family: 'Harry Potter', sans-serif;
   letter-spacing: 5px;
@@ -164,3 +164,20 @@ tr {
 td {
   padding: 5px;
 }
+
+
+/********************** DETAIL DOCUMENT ******************************/
+.frame_detail {
+  width: 60%;
+    display: block;
+    margin: auto;
+    height: 1000px;
+    margin-top: 5%;
+    margin-bottom: 8%;
+    background: white;
+}
+
+pre {
+  color: white;
+}
+/***********************************************************************/

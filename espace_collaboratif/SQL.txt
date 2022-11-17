@@ -6,3 +6,15 @@ script:
 CREATE TABLE `bd_espace_collaboratif`.`document` ( `id` BIGINT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , `path` VARCHAR(200) NOT NULL , `annee` YEAR NOT NULL , `domaine` VARCHAR(200) NOT NULL , `niveau` INT NOT NULL , `date_ajout` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `valide` INT NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE = MyISAM;
 
 
+CREATE TABLE `bd_espace_collaboratif`.`correction` (
+    `id_document` BIGINT NOT NULL ,
+    `id_correction` BIGINT NOT NULL,
+    PRIMARY KEY (`id_document`, `id_correction`),
+    FOREIGN KEY `fk_id_document` (`id_document`) REFERENCES `document` (`id`),
+    FOREIGN KEY `fk_id_correction` (`id_correction`) REFERENCES `document` (`id`)) ENGINE = MyISAM;
+
+
+
+
+//INSERT INTO `correction` (`id_document`, `id_correction`) VALUES ('1', '2');
+//INSERT INTO `correction` (`id_document`, `id_correction`) VALUES ('1', '3');

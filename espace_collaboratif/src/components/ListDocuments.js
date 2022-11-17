@@ -60,7 +60,7 @@ function My3dBody () {
 
     useEffect(() => {
       /***********************************/
-    design();
+    //design();
       /*************************************/
     }
     )
@@ -75,6 +75,8 @@ function My3dBody () {
 export default function ListDocuments() {
 
     const [documents, setDocuments] = useState([]);
+    const [corrections, setCorrections] = useState([]);
+    //ces trois en dessous c'est pour gérer le param domaine qui vient de la page accueil
     const location = useLocation()
     const { domaine } = location.state
     const navigate = useNavigate()
@@ -82,6 +84,12 @@ export default function ListDocuments() {
     useEffect(() => {
         navigate('', { state: { domaine: domaine }}); /*je sauvegarde domaine*/
         getDocuments();
+
+        // documents.forEach(function (item, index) {
+        //    // console.log(item, index);
+        //    getCorrections(item.id);
+        // });     
+
     }, []);
 
     function getDocuments() {
@@ -111,7 +119,7 @@ export default function ListDocuments() {
         <div id="maincontainer">{My3dBody()}
             <div className="htmlcontainer">
                 <div>
-                    <h1 className="titre_liste_documents">{titre_page()}</h1>
+                    <h1 className="gros_titre_couleur">{titre_page()}</h1>
                     <table className={`liste_${domaine}`}>
                         <thead>
                             <tr>
@@ -124,7 +132,7 @@ export default function ListDocuments() {
                             {documents.map((document, key) =>
                                 <tr key={key}>
                                     <td>
-                                        <Link to={`${document.id}/detail`}>{document.nom}</Link>
+                                        <Link to={`${document.id}/detail`} state={{ id_document: document.id }}>{document.nom}</Link>
                                     </td>
                                     <td>{document.annee}</td>
                                     <td>Bac + {document.niveau}</td>
