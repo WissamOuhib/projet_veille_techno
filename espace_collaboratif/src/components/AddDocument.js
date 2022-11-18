@@ -1,3 +1,4 @@
+import { Link} from "react-router-dom";
 import { useState } from "react";
 
 export default function AddDocument() {
@@ -23,7 +24,10 @@ export default function AddDocument() {
 
     return (
         <div>
-            <h1>Ajouter un document</h1>
+            <h1>
+            <Link to="/">&#8592; &nbsp; &nbsp; &nbsp;</Link>
+            Ajouter un document
+            </h1>
             <form onSubmit={handleSubmit}>
                 <table cellSpacing="10">
                     <tbody>

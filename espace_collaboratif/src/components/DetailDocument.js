@@ -68,8 +68,6 @@ export default function DetailDocument() {
                         )}
                     </tbody>}
                 </table>
-
-                <button>Proposer solution</button>
             </div>
         )
     }
@@ -100,6 +98,15 @@ export default function DetailDocument() {
 
         <div>
         {render_solutions()}
+        </div>
+
+        <div className="card_ajouter_doc">
+            {/* <h3>Ajouter un document</h3> */}
+            <img className="bulle" src={require('.././media/bulle_texte_solution1.png')}></img>
+            <img className="harry" src={require('.././media/harry1.png')}></img>
+            <Link to="../accueil/add">
+                <span></span>
+            </Link>
         </div>
 
     </div>
