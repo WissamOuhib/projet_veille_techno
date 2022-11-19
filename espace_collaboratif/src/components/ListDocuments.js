@@ -2,14 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as THREE from "three";
-import { make_particles, make_particlesLight } from '.././js/threeDesign.js';
-
+import { infiniteAnimation, make_particles, make_particlesLight } from '.././js/threeDesign.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 function design() {
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0f172a);
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
     const renderer = new THREE.WebGLRenderer();/*alpha true pour la transparence du fond*/
     renderer.setSize(window.innerWidth, window.innerHeight);
     //renderer.outputEncoding = THREE.sRGBEncoding;
@@ -34,8 +34,59 @@ function design() {
 
     //Lights
 
-    scene.add(make_particlesLight());
+   // scene.add(make_particlesLight());
     scene2.add(make_particlesLight());
+
+    //modèle 3D bureau
+
+  var obj;
+
+  const loader = new GLTFLoader();
+
+  loader.load(require('.././media/victorian_desk_with_props.glb'), function (gltf) {
+
+    // console.log(gltf);
+
+    obj = gltf.scene;
+
+  //  obj.position.y -= 1;
+    obj.position.x += 2;
+    obj.position.z = -5;
+
+    obj.rotation.y += 5.2;
+    obj.rotation.x += 0.4;
+    obj.rotation.z += 0.08;
+
+
+    obj.receiveShadow = true;
+    obj.castShadow = true;
+
+    obj.scale.set(1, 1, 1);
+    //obj.scale.set(2.2, 1.7, 1.7);
+
+    scene.add(obj);
+
+  }, undefined, function (error) {
+
+    console.error(error);
+
+  });
+
+  loader.castShadow = true;
+
+  //lumiere pour le bureau 3d
+
+  const directioanlLight = new THREE.DirectionalLight(0xffffff, 6);
+    directioanlLight.position.set(10, 1, 20);
+    //directioanlLight.castShadow = true;
+    scene.add(directioanlLight);
+
+    const hemispherelight = new THREE.HemisphereLight(0xffffff, 0x000000, 5);
+    // hemispherelight.position.set(10, -10, 10);
+    hemispherelight.position.set(0, 0, 0);
+    //   hemispherelight.position.set(0, 0, 0);
+    //   hemispherelight.castShadow = true;
+    scene.add(hemispherelight);
 
     /**************************************/
     const clock = new THREE.Clock();
@@ -49,6 +100,10 @@ function design() {
         const elapsedTime = clock.getElapsedTime();
         particles.rotation.y = elapsedTime * 0.02;
         particles2.rotation.y = elapsedTime * 0.02;
+
+        if (obj) {
+            infiniteAnimation(elapsedTime, obj,2,null);
+          }
     }
 
     animate();
@@ -60,14 +115,14 @@ function My3dBody () {
 
     useEffect(() => {
       /***********************************/
-    //design();
+    design();
       /*************************************/
     }
     )
   
     return <div id="canvacontainer">
       <div id="canva1"></div>
-      <div id="canva2" style={{top:"70%"}}></div>
+      <div id="canva2" style={{top:"130%"}}></div>
     </div>
           
 }
@@ -119,8 +174,8 @@ export default function ListDocuments() {
         <div id="maincontainer">{My3dBody()}
             <div className="htmlcontainer">
                 <div>
-                    <h1 className="gros_titre_couleur">{titre_page()}</h1>
-                    <table className={`liste_${domaine}`}>
+                    <h1 id="titre_liste_documents" className="gros_titre_couleur">{titre_page()}</h1>
+                    <table id="table_liste_documents" className={`liste_${domaine}`} >
                         <thead>
                             <tr>
                                 <th>Document</th>
