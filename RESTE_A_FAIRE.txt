@@ -6,5 +6,6 @@ implémenter:
 
 -trier par filiere / année
 -rechercher par mot clé
+-limiter le nombre de ligne des tableaux
 
 page login dans admin
