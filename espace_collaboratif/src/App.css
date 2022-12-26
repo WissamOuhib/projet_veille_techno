@@ -33,15 +33,101 @@ nav ul li a, a {
   background-repeat: no-repeat;
   border-radius: 50px;
   box-shadow: rgb(0, 0, 0) 5px 5px 10px;
+
+  animation: rotate 10s ease infinite;
 }
 
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes rotate{
+  0% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
 /****** Liste des documents ********/
 
-.titre_liste_documents {
-  color: #fa7a0a;
-  font-family: 'Harry Potter', sans-serif;
-  text-shadow: #000 10px 0 20px;
+#titre_liste_documents {
+  text-align: left;
+  padding-top: 15%;
+  padding-left: 10%;
+  margin-top: 0;
 }
+
+.gros_titre_couleur {
+ /* color: #fa7a0a;*/
+  font-family: 'Harry Potter', sans-serif;
+  letter-spacing: 5px;
+  font-size: 3vw;
+
+  text-shadow: #000 10px 0 15px;
+  background: linear-gradient(to left,#aaa 20%, #fa7a0a 40%, #fa7a0a 60%, #7DF9FF 80%, #aaa 100%);
+  background-size: 200% auto;
+  color: #000 ;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: shine 10s linear infinite;
+}
+
+#table_liste_documents {
+  margin-top: 10%;
+}
+
+.card_ajouter_doc {
+  width: 550px;
+/*  height: 10vw;*/
+  margin: auto;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  display: flex;
+}
+
+.bulle {
+  height: 130px;
+}
+.hermione {
+  height: 300px;
+}
+
+.card_ajouter_doc a {
+  margin: auto;
+  background: #eee;
+  border-radius: 50px;
+  animation: zoom-in-zoom-out 5s ease infinite;
+}
+
+.card_ajouter_doc span {
+  display: block;
+  background-image: url("media/add_doc.png");
+  width: 100px;
+  height: 100px;
+  background-size: 70%;
+  background-position-x: 70%;
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+
+  /* box-shadow: rgb(0, 0, 0) 5px 5px 10px;*/ 
+}
+
 /*************************************/
 
 /************* LES LISTES (tables) ****************/
@@ -88,4 +174,80 @@ tr {
 
 td {
   padding: 5px;
+}
+
+
+/********************** DETAIL DOCUMENT ******************************/
+
+#middle_canva, #bottom_canva {
+  top: 280%;
+    position: relative;
+}
+
+.frame_detail {
+  width: 60%;
+    display: block;
+    margin: auto;
+    height: 1000px;
+    margin-top: 5%;
+    margin-bottom: 8%;
+    background: white;
+}
+
+pre {
+  color: white;
+}
+
+#titre_solutions_document {
+  margin-top: 10%;
+  margin-bottom: 12%;
+}
+
+.harry {
+  height: 250px;
+  margin-right: 10%;
+}
+/***********************************************************************/
+
+/********************** ADD DOCUMENT ******************************/
+.table_form_add {
+  background-image: url("media/books.png");
+  background-size: contain;
+  background-position-y: -5px;
+  padding: 30px;
+  width: 50%;
+  margin: unset;
+  margin-left: 40%;
+  margin-top: 5%;
+}
+
+.form_elem {
+  width:100%;
+}
+
+.row_buttun_save {
+  text-align: center;
+}
+
+.row_buttun_save button {
+  border: none;
+  height: 40px;
+  width: 120px;
+  border-radius: 20px;
+  background: #0f172a;
+  /*background: #0f172a;*/
+  /*background: linear-gradient(217deg, #fa7a0a, rgba(255,0,0,0) 50.71%),
+            linear-gradient(127deg, #7DF9FF, rgba(0,255,0,0) 50.71%),
+            linear-gradient(336deg, #0f172a, rgba(0,0,255,0) 150.71%);*/
+  color: white;
+  cursor: pointer;
+  margin: 2%;
+  font-size: 15px;
+}
+
+.row_buttun_save button:hover {
+ /* background: linear-gradient(0.25turn, #fa7a0a, #0f172a, #7DF9FF);*/
+ background: #fa7a0a;
+ color: #0f172a;
+ font-weight: bold;
 }
